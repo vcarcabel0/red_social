@@ -13,7 +13,6 @@ export default function Login() {
             ...tuki,[event.target.name] : event.target.value
         })
         console.log(event.target.value)
-        event.preventDefault();
     }
 
     function guardar(event){
@@ -21,8 +20,9 @@ export default function Login() {
         ...tuki,
         [event.target.name] : event.target.value
       })
+      localStorage.setItem('idUsers', tuki) 
+
       console.log(event.target.value)
-      event.preventDefault();
     }
 
   return (
@@ -39,7 +39,7 @@ export default function Login() {
             No compartas tus contraseñas con terceros 
             </Form.Text>
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" onClick={guardar}>
             Iniciar
         </Button>
     </Form>
